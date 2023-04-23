@@ -1,0 +1,38 @@
+# 端口
+server:
+  port: 7083
+
+# sa-token配置
+sa-token:
+  # SSO-相关配置
+  sso:
+    # SSO-Server端 统一认证地址
+    auth-url: http://sa-sso-server.com:7080/sso/auth
+    # 打开单点注销功能
+    is-slo: true
+    # 单点注销地址
+    slo-url: http://sa-sso-server.com:7080/sso/signout
+    # 打开模式三（使用Http请求校验ticket）
+    is-http: true
+    # SSO-Server端 ticket校验地址
+    check-ticket-url: http://sa-sso-server.com:7080/sso/checkTicket
+    # SSO-Server端 查询userinfo地址
+    userinfo-url: http://sa-sso-server.com:7080/sso/userinfo
+    secretkey: kQwIOrYvnXmSDkwEiFngrKidMcdrgKor
+
+  # 配置Sa-Token单独使用的Redis连接 （此处需要和SSO-Server端连接同一个Redis）
+  alone-redis:
+    # Redis数据库索引 (默认为0)
+    database: 7
+    # Redis服务器地址
+    host: 192.168.2.146
+    # Redis服务器连接端口
+    port: 6379
+    # Redis服务器连接密码（默认为空）
+    password:
+    # 连接超时时间
+    timeout: 10s
+
+forest:
+  # 关闭 forest 请求日志打印
+  log-enabled: false
